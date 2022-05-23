@@ -1,0 +1,23 @@
+.GoogleLoginButton {
+    display: grid;
+    width: 100%;
+    height: 65px;
+    grid-template-columns: 80px 1fr;
+    background-color: rgb(245, 245, 245);
+    align-content: center;
+    justify-items: center;
+    border: 0px;
+    border-radius: 10px;
+    margin-top: 20px;
+    box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 12px;
+    cursor: pointer;
+
+    img {
+        height: 35px;
+    }
+
+    h2 {
+        line-height: 35px;
+        color: rgb(100, 100, 100);
+    }
+}

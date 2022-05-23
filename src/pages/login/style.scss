@@ -1,0 +1,15 @@
+.LoginBox {
+    position: absolute;
+    width: calc(100% - 40px);
+    margin-left: 20px;
+    bottom: 80px;
+
+    .LoginText {
+        font-size: 50px;
+    }
+
+    .LoginSubText {
+        margin-top: 10px;
+        color: rgb(100, 100, 100);
+    }
+}
