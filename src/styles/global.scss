@@ -1,0 +1,26 @@
+@import url('./font.scss');
+
+
+* {
+    padding: 0px;
+    margin: 0px;
+    font-family: Interop, sans-serif;
+    text-rendering: optimizeLegibility;
+    letter-spacing: -1px;
+}
+
+@for $i from 1 to 10 {
+    .w#{$i} {
+        font-weight: #{$i * 100};
+    }
+}
+
+
+.AppFrame {
+    width: 100vw;
+    height: 100vh;
+    position: fixed;
+    left: 0px;
+    top: 0px;
+    max-width: 500px;
+}
