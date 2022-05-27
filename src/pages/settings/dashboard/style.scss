@@ -1,0 +1,41 @@
+.DashboardFrame {
+    width: calc(100% - 40px);
+    margin: 0px auto;
+    height: calc(100% - 265px);
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-gap: 20px;
+    .DashboardBox {
+        border-radius: 20px;
+        position: relative;
+        min-height: 120px;
+        .DashboardItemtitle {
+            font-size: 22px;
+            margin-left: 15px;
+            margin-top: 15px;
+            color: white;
+        }
+
+        .DashboardItemcontent {
+            color: white;
+            position: absolute;
+            bottom: 20px;
+            right: 20px;
+            font-size: 35px;
+        }
+    }
+
+    .First {
+        background-color: #FFD400;
+    }
+
+    .Second {
+        background-color: rgb(74, 101, 255);
+    }
+
+    .Third {
+        background-color: #3ee7a4;
+        grid-column: 1 / 3;
+        overflow: scroll;
+    }
+}

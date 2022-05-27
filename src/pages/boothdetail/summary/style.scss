@@ -1,0 +1,54 @@
+.DetailGrid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-gap: 20px;
+
+    div {
+        width: 100%;
+        min-height: 160px;
+        border-radius: 20px;
+        position: relative;
+
+        img {
+            width: 40%;
+            filter: invert(1) opacity(0.6);
+            position: absolute;
+            left: 20px;
+            bottom: 20px;
+        }
+
+        h3 {
+            position: absolute;
+            top: 20px;
+            left: 20px;
+            color: white;
+        }
+
+        h2 {
+            position: absolute;
+            bottom: 20px;
+            right: 20px;
+            color: white;
+            font-size: 50px;
+        }
+    }
+
+    .First {
+        background-color: #FFD400;
+    }
+
+    .Second {
+        background-color: rgb(74, 101, 255);
+    }
+
+    .Third {
+        background-color: #2fdd7e;
+        grid-column: 1 / 3;
+        p {
+            width: calc(100% - 40px);
+            margin: 0 auto;
+            margin-top: 50px;
+            margin-bottom: 20px;
+        }
+    }
+}

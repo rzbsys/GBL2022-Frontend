@@ -1,10 +1,9 @@
-import React from 'react';
+import React, {memo} from 'react';
 import './style.scss';
 
 
 function Background() {
     const RandomDgree = Math.random() * 1000 % 360;
-    
     return (
         <div className="background">
             <div className="triangle" style={{transform:`rotate(${RandomDgree}deg)`}}></div>
@@ -14,4 +13,4 @@ function Background() {
     );
 }
 
-export default Background;
+export default memo(Background);

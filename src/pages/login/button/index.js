@@ -7,16 +7,30 @@ import { Login } from 'store/auth/action';
 import GoogleLogo from 'assets/image/search.svg';
 import GoogleLoginApi from 'utils/GoogleLoginApi';
 
+import { signOut, deleteUser } from "firebase/auth";
+import CheckEmail from 'utils/CheckEmail';
+import { toast } from "react-toastify";
+import { auth } from 'utils/FirebaseApp';
+
+
 function Button() {
     const dispatch = useDispatch();
     function onClick() {
         GoogleLoginApi((result) => {
-            console.log(result);
             const user = result.user;
-            const uid = user.uid;
-            const displayName = user.displayName;
-            const photoURL = user.photoURL;
-            dispatch(Login(displayName, uid, photoURL));    
+            console.log(user);
+            if (CheckEmail(user.email)) {
+                const uid = user.uid;
+                const displayName = user.displayName;
+                const photoURL = user.photoURL;
+                dispatch(Login(displayName, uid, photoURL));
+            } else {
+                deleteUser(auth.currentUser).then(() => {
+                    signOut(auth).then(() => {
+                        toast.error('대전대신고등학교에서 발급한 GOOGLE 계정으로 로그인해주세요.');
+                    });
+                });
+            }
         });
     }
 

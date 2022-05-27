@@ -1,0 +1,14 @@
+.Toastify__toast-container {
+    bottom: 80px !important;
+    z-index: 1 !important;
+}
+
+.Toastify__toast {
+    width: calc(100% - 50px);
+    margin: 0 auto;
+    border-radius: 20px !important;
+    background-color: rgba(100, 100, 100, 0.8) !important;
+    backdrop-filter: blur(5px);
+    color: white !important;
+    font-size: 20px;
+}

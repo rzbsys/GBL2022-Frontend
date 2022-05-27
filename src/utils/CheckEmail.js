@@ -1,5 +1,5 @@
 function CheckEmail(email) {
-    if (email.indexOf('@dshs.kr') == -1) {
+    if (email.indexOf('@dshs.kr') === -1) {
         return false;
     } else {
         return true;

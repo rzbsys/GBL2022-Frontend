@@ -1,0 +1,34 @@
+.NavbarFrame {
+    width: 100%;
+    height: 100%;
+    position: relative;
+    left: 0px;
+    top: 0px;
+    background-color : rgb(250, 250, 250);
+
+    .Content {
+        width: 100%;
+        height: calc(100% - 70px);
+        background-color: white;
+        border-radius: 0px 0px 20px 20px;
+        position: absolute;
+        top: 0px;
+        left: 0px;
+        overflow-y: scroll;
+        overflow-x: hidden;
+    }
+
+    .Navbar {
+        width: 100%;
+        height: 70px;
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: space-around;
+        background-color: rgb(250, 250, 250);
+        position: absolute;
+        bottom: 0px;
+        left: 0px;
+        z-index: 100;
+    }
+}

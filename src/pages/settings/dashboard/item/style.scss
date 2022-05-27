@@ -1,0 +1,24 @@
+.DashboardItemFrame {
+    width: calc(100% - 60px);
+    margin: 0px 30px;
+    margin-top: 20px;
+    padding-bottom: 20px;
+
+    height: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    color: white;
+    position: relative;
+    border-bottom: 1px solid #39be89;
+
+    .CacelButton {
+        width: 70px;
+        height: 30px;
+        border: 0px;
+        border-radius: 20px;
+        font-size: 15px;
+        color: #24af77;
+        cursor: pointer;
+    }
+}

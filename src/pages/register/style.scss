@@ -2,17 +2,33 @@
     font-size: 30px;
     margin-left: 20px;
     margin-top: 40px;
+    position: relative;
 }
 
+.RegisterSubTitle {
+    margin-left: 20px;
+    margin-top: 10px;
+    color: rgb(100, 100, 100);
+    position: relative;
+}
+
+.RegisterSubmit {
+    width: calc(100% - 40px);
+    position: absolute;
+    margin-left: 20px;
+    bottom: 20px;
+    height: 60px;
+    border: 0px;
+    border-radius: 20px;
+    font-size: 20px;
+    background-color: #edf0ff;
+    color: #3b59ff;
+    cursor: pointer;
+}
 
 .CheckboxFrame {
     width: calc(100% - 40px);
     margin-left: 20px;
-    max-height: calc(100% - 140px);
-    overflow-y: scroll;
-    margin-top: 10px;
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    grid-gap: 20px;
     border: 0px;
+    margin-top: 20px;
 }

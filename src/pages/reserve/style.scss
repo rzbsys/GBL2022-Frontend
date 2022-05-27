@@ -1,0 +1,14 @@
+.ReserveTitle {
+    margin-left: 20px;
+    font-size: 40px;
+}
+
+.ReserveGrid {
+    width: calc(100% - 40px);
+    height: calc(100% - 118.4px);
+    margin: 0 auto;
+    margin-top: 20px;
+    overflow-y: scroll;
+    border-radius: 20px;
+
+}
