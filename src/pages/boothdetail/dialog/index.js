@@ -12,7 +12,7 @@ const Transition = React.forwardRef(function Transition(props, ref) {
   return <Slide direction="up" ref={ref} {...props} />;
 });
 
-export default function AlertDialogSlide({ open, setOpen, Boothname, agree, deny }) {
+export default function AlertDialogSlide({ open, setOpen, Boothname, agree }) {
   const handleClose = () => {
     setOpen(false);
   };
@@ -35,7 +35,7 @@ export default function AlertDialogSlide({ open, setOpen, Boothname, agree, deny
           </DialogContentText>
         </DialogContent>
         <DialogActions>
-          <Button color="error" onClick={() => { handleClose(); deny(); }}>취소하기</Button>
+          <Button color="error" onClick={() => { handleClose(); }}>취소하기</Button>
           <Button onClick={() => { handleClose(); agree(); }}>예약하기</Button>
         </DialogActions>
       </Dialog>

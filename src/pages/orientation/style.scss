@@ -1,0 +1,45 @@
+.orientation {
+    width: 100vw;
+    height: 100vh;
+    background-color: white;
+    position: absolute;
+    left: 0px;
+    top: 0px;
+    z-index: 10000;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: row;
+    gap: 10%;
+    img {
+        width: 20%;
+    }
+    .OrientationTextBox {
+        h1 {
+            font-size: 40px;
+        }
+    
+        p {
+            font-size: 20px;
+            color: grey;
+            margin-top: 10px;
+        }
+    
+    }
+
+}
+
+@media (orientation: portrait) {
+	.orientation {
+        height: 0px;
+        overflow: hidden;
+        opacity: 0;
+    }
+}
+
+@media (orientation: landscape) {
+    .orientation {
+        opacity: 1;
+        transition: opacity 0.3s;
+    }
+}

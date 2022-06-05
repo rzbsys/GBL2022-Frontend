@@ -5,33 +5,54 @@ import ListItemText from '@mui/material/ListItemText';
 import DialogTitle from '@mui/material/DialogTitle';
 import Dialog from '@mui/material/Dialog';
 import Slide from '@mui/material/Slide';
-
-const Round = [1, 2, 3, 4, 5, 6, 7];
+import { useSelector } from 'react-redux';
+import BookJsonToList from 'utils/BookJsonToList';
 
 const Transition = React.forwardRef(function Transition(props, ref) {
-  return <Slide direction="up" ref={ref} {...props}/>;
+  return <Slide direction="up" ref={ref} {...props} />;
 });
 
-function SimpleDialog({open, setOpen, callbackfunc}) {  
+function SimpleDialog({ open, setOpen, callbackfunc }) {
   function handleListItemClick(cnt) {
     setOpen(false);
     callbackfunc(cnt);
   }
 
+  const BookState = useSelector((state) => {
+    return BookJsonToList(state.Book.books);
+  });
+  console.log(BookState);
+
   return (
-    <Dialog 
+    <Dialog
       open={open}
       TransitionComponent={Transition}
-      onClose={() => {setOpen(false)}}
-      style={{borderRadius:'20px'}}
+      onClose={() => { setOpen(false) }}
+      style={{ borderRadius: '20px' }}
     >
-      <DialogTitle style={{fontWeight:'800', textAlign:'center'}}>체험을 진행할 차시를 선택하세요.</DialogTitle>
+      <DialogTitle style={{ fontWeight: '800', textAlign: 'center' }}>체험을 진행할 차시를 선택하세요.</DialogTitle>
       <List sx={{ pt: 0 }}>
-        {Round.map((cnt) => (
-          <ListItem button onClick={() => handleListItemClick(cnt)} key={cnt} style={{textAlign:'center'}}>
-            <ListItemText primary={cnt + '교시'} />
-          </ListItem>
-        ))}
+        {
+          BookState.map((item, index) => {
+            if (index !== 0) {
+              console.log(item);
+              if (BookState[item] === -1) {
+                return (
+                  <ListItem button onClick={() => handleListItemClick(index)} key={index} style={{ textAlign: 'center' }}>
+                    <ListItemText primary={(index) + '교시'} />
+                  </ListItem>
+                )
+              } else {
+                return (
+                  <ListItem disabled button key={index} style={{ textAlign: 'center' }}>
+                    <ListItemText primary={(index) + '교시 🚫'} />
+                  </ListItem>
+                )
+              }
+            }
+          })
+        }
+
       </List>
     </Dialog>
   );

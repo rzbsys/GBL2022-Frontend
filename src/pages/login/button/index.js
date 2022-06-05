@@ -12,6 +12,12 @@ import CheckEmail from 'utils/CheckEmail';
 import { toast } from "react-toastify";
 import { auth } from 'utils/FirebaseApp';
 
+import { GetUserExist } from 'api/Auth';
+
+import { GetUserBookList } from 'api/Book';
+import { InitBookList } from 'store/book/action';
+
+
 
 function Button() {
     const dispatch = useDispatch();
@@ -23,7 +29,17 @@ function Button() {
                 const uid = user.uid;
                 const displayName = user.displayName;
                 const photoURL = user.photoURL;
-                dispatch(Login(displayName, uid, photoURL));
+
+                GetUserExist(uid).then((res) => {
+                    console.log(res);                    
+                    GetUserBookList(uid).then((res) => {
+                        dispatch(InitBookList(res.booth_books));
+                        console.log(res.booth_books);
+                        dispatch(Login(displayName, uid, photoURL, res.exist));
+                    });
+                }).catch(() => {
+                    toast.error('로그인에 실패하였습니다.');
+                });
             } else {
                 deleteUser(auth.currentUser).then(() => {
                     signOut(auth).then(() => {

@@ -18,8 +18,12 @@ import ReservePage from './reserve';
 import { ToastContainer, Slide } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import Redirect from 'utils/Redirect';
-
+import Orientation from './orientation';
+import RankingPage from './ranking';
 import CheckEmail from 'utils/CheckEmail';
+import { GetUserExist } from 'api/Auth';
+import { GetUserBookList } from 'api/Book';
+import { InitBookList } from 'store/book/action';
 
 function App() {
     const location = useLocation();
@@ -29,14 +33,20 @@ function App() {
     useEffect(() => {
         onAuthStateChanged(auth, (user) => {
             if (user && CheckEmail(user.email)) {
-                dispatch(Login(user.diysplayName, user.uid, user.photoURL));
+                GetUserExist(user.uid).then((res) => {
+                    console.log(user);
+                    dispatch(Login(user.displayName, user.uid, user.photoURL, res.exist));
+                });
+                GetUserBookList(user.uid).then((res) => {
+                    dispatch(InitBookList(res.booth_books));
+                });
             }
             setAuthLoad(false);
         });
     }, []);
 
     function ValidateURL(url) {
-        const NonAnimateURL = ['booth', 'settings', 'map', 'reserve']
+        const NonAnimateURL = ['ranking', 'booth', 'settings', 'map', 'reserve']
         for (let i = 0; i < NonAnimateURL.length; i++) {
             if (url.includes(NonAnimateURL[i])) {
                 return false;
@@ -47,9 +57,10 @@ function App() {
 
     return (
         <>
+            <Orientation></Orientation>
             <ToastContainer
                 hideProgressBar={true}
-                autoClose={800}
+                autoClose={2000}
                 className="toast-frame"
                 bodyClassName="toast-body"
                 position={"bottom-center"}
@@ -83,6 +94,7 @@ function App() {
                                                     <Route path='settings' element={<SettingPage></SettingPage>}></Route>
                                                     <Route path='map' element={<MapPage></MapPage>}></Route>
                                                     <Route path='reserve' element={<ReservePage></ReservePage>}></Route>
+                                                    <Route path='ranking' element={<RankingPage></RankingPage>}></Route>
                                                 </Routes>
                                             </CSSTransition>
                                         </TransitionGroup>

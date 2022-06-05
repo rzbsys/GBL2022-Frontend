@@ -1,5 +1,5 @@
 .Toastify__toast-container {
-    bottom: 80px !important;
+    bottom: 70px !important;
     z-index: 1 !important;
 }
 
@@ -11,4 +11,5 @@
     backdrop-filter: blur(5px);
     color: white !important;
     font-size: 20px;
+    margin-bottom: 10px !important;
 }

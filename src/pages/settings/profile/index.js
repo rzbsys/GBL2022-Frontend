@@ -11,7 +11,6 @@ import { toast } from 'react-toastify';
 function Profile({ src, name }) {
     const dispatch = useDispatch();
     const navigate = useNavigate();
-
     function OnClick() {
         signOut(auth).then(() => {
             dispatch(Logout());
@@ -27,7 +26,7 @@ function Profile({ src, name }) {
             </div>
             <div className="ProfileText">
                 <p>대전대신고등학교</p>
-                <h1>전민국</h1>
+                <h1>{name}</h1>
                 <button className="Logout w7" onClick={OnClick}>
                     로그아웃
                 </button>

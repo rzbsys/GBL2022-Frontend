@@ -2,16 +2,27 @@ import React, { useState } from 'react';
 import Background from 'components/background';
 import './style.scss';
 import Checkbox from './checkbox';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { Register } from 'store/auth/action';
 import Logo from 'components/logo';
 
+import { PostUserSubject } from 'api/Auth';
+import { toast } from 'react-toastify';
+
+
 function RegisterPage() {
     const dispatch = useDispatch();
+    const AuthState = useSelector((state) => state.Auth);
     const [SubjectSelected, SetSubjectSelected] = useState();
 
+
     function OnClick() {
-        dispatch(Register());
+        PostUserSubject(AuthState.userUid).then((res) => {
+            console.log(res);
+            dispatch(Register());
+        }).catch(() => {
+            toast.error('이기범 일해라');
+        });
     }
 
     return (

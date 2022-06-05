@@ -5,7 +5,7 @@ import UsersIcon from 'assets/image/multiple-users-silhouette.svg';
 import ClockIcon from 'assets/image/clock.svg';
 
 
-function Summary() {
+function Summary({ text }) {
     return (
         <>
             <h2 className='w8 DetailTitle'>부스 개요</h2>
@@ -22,7 +22,7 @@ function Summary() {
                 </div>
                 <div className="Third">
                     <h3 className='w6'>부스 소개</h3>
-                    <p className='w5'>안녕하세여안녕하세여안녕하세여안녕하세여안녕하세여안녕하세여안녕하세여안녕하세여안녕하세여안녕하세여안녕하세여안녕하세여안녕하세여안녕하세여안녕하세여안녕하세여안녕하세여안녕하세여안녕하세여안녕하세여안녕하세여안녕하세여안녕하세여안녕하세여안녕하세여</p>
+                    <p className='w5'>{text}</p>
 
                 </div>
             </div>

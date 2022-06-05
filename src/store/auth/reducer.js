@@ -8,7 +8,6 @@ const initState = {
     userUid: null
 };
 
-
 const authReducer = (state = initState, action) => {
     switch (action.type) {
         case actions.LOGIN:
