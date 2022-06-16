@@ -2,7 +2,7 @@ import React, { useState, useRef, useEffect } from 'react';
 import './style.scss';
 import { throttle } from 'lodash';
 
-function Header() {
+function Header({IsAvailableBooth}) {
     // 하드코딩 수정필요
     const [NevEnable, SetNevEnable] = useState(false);
     const NavRef1 = useRef();
@@ -48,7 +48,7 @@ function Header() {
             </div>
             <div className="Header" ref={NavRef2}>
                 <h1 className='HeaderTitle'>부스 목록</h1>
-                <span className='AvailableCnt w5'>체험가능한 부스 0개</span>
+                <span className='AvailableCnt w5'>체험가능한 부스 {IsAvailableBooth}개</span>
             </div>
 
         </>

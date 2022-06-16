@@ -28,7 +28,7 @@ function Dashboard({ Score, Rank, Activities=[] }) {
                 {
                     Activities.map((item, index) => {
                         return (
-                            <DashboardItem name={item.booth_id} score={item.score} key={index}></DashboardItem>
+                            <DashboardItem id={item.booth_id} score={item.score} key={index}></DashboardItem>
                         )
                     })
                 }

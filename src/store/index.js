@@ -6,11 +6,13 @@ import { composeWithDevTools } from 'redux-devtools-extension'; // 리덕스 개
 import authReducer from './auth/reducer';
 import BoothReducer from './booth/reducer';
 import BookReducer from './book/reducer';
+import AdminReducer from './admin/reducer';
 
 const combined = combineReducers({
     Auth: authReducer,
     Booth: BoothReducer,
-    Book: BookReducer
+    Book: BookReducer,
+    Admin : AdminReducer
 });
 
 const store = createStore(combined, composeWithDevTools());

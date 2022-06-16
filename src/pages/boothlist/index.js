@@ -11,12 +11,13 @@ import { useDispatch, useSelector } from 'react-redux';
 import { BoothIn } from 'store/booth/action';
 import { GetBoothList } from 'api/Booth';
 import LoadingEffect from './loading';
+import { toast } from 'react-toastify';
 
 function BoothlistPage() {
     const BoothState = useSelector((state) => state.Booth);
     const dispatch = useDispatch();
     const [Loading, SetLoading] = useState(true);
-
+    const [IsAvailableBooth, SetIsAvailableBooth] = useState(0);
     const [SearchWord, SetSearchWord] = useState('');
     const [isPending, startTransition] = useTransition({
         timeoutMs: 3000
@@ -24,11 +25,21 @@ function BoothlistPage() {
 
     useEffect(() => {
         GetBoothList().then((res) => {
-            if (res) {
+            if (res.booths) {
                 dispatch(BoothIn(res.booths));
-                SetLoading(false);    
+                var cnt = 0;
+                for (var i = 0; i < res.booths.length; i++) {
+                    if (res.booths[i].congestion === 0) {
+                        cnt = cnt + 1;
+                    }
+                }
+
+                SetIsAvailableBooth(cnt);
+                SetLoading(false);
+            } else {
+                toast.error('부스정보를 불러올 수 없습니다.');
             }
-        })
+        });
     }, []);
 
     return (
@@ -36,7 +47,7 @@ function BoothlistPage() {
             <Background></Background>
             <Logo fixed></Logo>
             <QRButton></QRButton>
-            <Header></Header>
+            <Header IsAvailableBooth={IsAvailableBooth}></Header>
             <SearchBar startTransition={startTransition} SetSearchWord={SetSearchWord}></SearchBar>
             <div className="BoothItemFrame">
                 {

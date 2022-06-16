@@ -4,12 +4,12 @@
     margin-top: 20px;
     padding-bottom: 20px;
 
-    height: 20px;
-    display: flex;
+    
+    display: grid;
+    grid-template-columns: 1fr 100px;
     align-items: center;
-    justify-content: space-between;
+    justify-items: center;
     color: white;
-    position: relative;
     border-bottom: 1px solid #39be89;
 
     .CacelButton {
@@ -20,5 +20,16 @@
         font-size: 15px;
         color: #24af77;
         cursor: pointer;
+    }
+
+    .BoothName {
+        overflow: hidden;
+        display: inline-block;
+        text-overflow: ellipsis;
+        display: -webkit-box;
+        -webkit-box-orient: vertical;
+        white-space: normal;
+        word-break: break-all;
+        -webkit-line-clamp: 1;
     }
 }

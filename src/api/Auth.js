@@ -11,9 +11,10 @@ export const GetUserExist = async (UserId) => {
     return res.data;
 }
 
-export const PostUserSubject = async (UserId) => {
+export const PostUserSubject = async (UserId, Name) => {
     const res = await instance.post('/user/', {
-        id: UserId
+        id: UserId,
+        username: Name
     })
     return res.data;
 }

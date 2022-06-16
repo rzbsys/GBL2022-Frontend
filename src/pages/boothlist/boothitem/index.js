@@ -2,10 +2,14 @@ import React from 'react';
 import './style.scss';
 import { useNavigate } from 'react-router-dom';
 
-function BoothItem({title = 'Test', subtitle = 'Test', boothid = 1}) {
+function BoothItem({title = 'Test', subtitle = 'Test', boothid = 1, onClickFunc}) {
     const navigator = useNavigate();
     function OnClick() {
-        navigator('/booth/' + boothid);
+        if (!onClickFunc) {
+            navigator('/booth/' + boothid);
+        } else {
+            onClickFunc();
+        }
     }
     return (
         <div className='BoothItem' onClick={OnClick}>

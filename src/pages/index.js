@@ -7,9 +7,9 @@ import { TransitionGroup, CSSTransition } from 'react-transition-group';
 import LoginPage from './login';
 import RegisterPage from './register';
 import Loading from 'components/loading';
+import AdminPage from './admin';
 import Navbar from 'components/navbar';
 import { useSelector, useDispatch } from 'react-redux';
-import { Login } from 'store/auth/action';
 import BoothlistPage from './boothlist';
 import BoothDetail from './boothdetail';
 import SettingPage from './settings';
@@ -20,33 +20,24 @@ import 'react-toastify/dist/ReactToastify.css';
 import Redirect from 'utils/Redirect';
 import Orientation from './orientation';
 import RankingPage from './ranking';
-import CheckEmail from 'utils/CheckEmail';
-import { GetUserExist } from 'api/Auth';
-import { GetUserBookList } from 'api/Book';
-import { InitBookList } from 'store/book/action';
+import { CheckValid } from 'utils/useGoogleLogin';
+
 
 function App() {
     const location = useLocation();
     const dispatch = useDispatch();
     const AuthState = useSelector(state => state.Auth);
     const [AuthLoad, setAuthLoad] = useState(true);
+    
     useEffect(() => {
         onAuthStateChanged(auth, (user) => {
-            if (user && CheckEmail(user.email)) {
-                GetUserExist(user.uid).then((res) => {
-                    console.log(user);
-                    dispatch(Login(user.displayName, user.uid, user.photoURL, res.exist));
-                });
-                GetUserBookList(user.uid).then((res) => {
-                    dispatch(InitBookList(res.booth_books));
-                });
-            }
+            CheckValid(user, dispatch)
             setAuthLoad(false);
         });
     }, []);
 
     function ValidateURL(url) {
-        const NonAnimateURL = ['ranking', 'booth', 'settings', 'map', 'reserve']
+        const NonAnimateURL = ['ranking', 'booth', 'settings', 'map', 'reserve', 'admin']
         for (let i = 0; i < NonAnimateURL.length; i++) {
             if (url.includes(NonAnimateURL[i])) {
                 return false;
@@ -73,6 +64,7 @@ function App() {
             <TransitionGroup className='AppFrame'>
                 <CSSTransition key={ValidateURL(location.pathname)} classNames='pageSliderGlobal' timeout={300}>
                     <Routes location={location}>
+                        <Route path='/admin/*' element={<AdminPage></AdminPage>}></Route>
                         {
                             !AuthState.isAuthenticated
                                 ? <>

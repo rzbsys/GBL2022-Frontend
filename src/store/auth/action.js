@@ -3,7 +3,6 @@ export const LOGOUT = 'AUTH/LOGOUT';
 export const REGISTER = 'AUTH/REGISTER';
 
 export const Login = (userName, userUid, userPicture, isRegisterd) => {
-    console.log(userName);
     return {
         type: LOGIN,
         payload: {

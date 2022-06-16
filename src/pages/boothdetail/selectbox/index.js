@@ -6,7 +6,6 @@ import DialogTitle from '@mui/material/DialogTitle';
 import Dialog from '@mui/material/Dialog';
 import Slide from '@mui/material/Slide';
 import { useSelector } from 'react-redux';
-import BookJsonToList from 'utils/BookJsonToList';
 
 const Transition = React.forwardRef(function Transition(props, ref) {
   return <Slide direction="up" ref={ref} {...props} />;
@@ -18,10 +17,7 @@ function SimpleDialog({ open, setOpen, callbackfunc }) {
     callbackfunc(cnt);
   }
 
-  const BookState = useSelector((state) => {
-    return BookJsonToList(state.Book.books);
-  });
-  console.log(BookState);
+  const BookState = useSelector((state) => state.Book);
 
   return (
     <Dialog
@@ -33,10 +29,9 @@ function SimpleDialog({ open, setOpen, callbackfunc }) {
       <DialogTitle style={{ fontWeight: '800', textAlign: 'center' }}>체험을 진행할 차시를 선택하세요.</DialogTitle>
       <List sx={{ pt: 0 }}>
         {
-          BookState.map((item, index) => {
+          BookState.books.map((item, index) => {
             if (index !== 0) {
-              console.log(item);
-              if (BookState[item] === -1) {
+              if (item === -1) {
                 return (
                   <ListItem button onClick={() => handleListItemClick(index)} key={index} style={{ textAlign: 'center' }}>
                     <ListItemText primary={(index) + '교시'} />

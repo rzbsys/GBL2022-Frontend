@@ -5,7 +5,7 @@ import UsersIcon from 'assets/image/multiple-users-silhouette.svg';
 import ClockIcon from 'assets/image/clock.svg';
 
 
-function Summary({ text }) {
+function Summary({ text, congestion = 0 }) {
     return (
         <>
             <h2 className='w8 DetailTitle'>부스 개요</h2>
@@ -13,7 +13,13 @@ function Summary({ text }) {
                 <div className="First">
                     <img src={ClockIcon} alt="" />
                     <h3 className='w8'>부스 혼잡도</h3>
-                    <h2>원활</h2>
+                    <h2>
+                    {{
+                        0 : "원활",
+                        1 : "혼잡",
+                        2 : "준비중"
+                    }[congestion]}
+                    </h2>
                 </div>
                 <div className="Second">
                     <img src={UsersIcon} alt="" />

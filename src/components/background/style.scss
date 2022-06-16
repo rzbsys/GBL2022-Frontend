@@ -13,6 +13,10 @@
     transform: translateY(0px);
     transition: 0.3s;
 
+    * {
+        z-index: 0;
+    }
+
     .triangle {
         width: 0px;
         border-top: 170px solid #00fa9a;

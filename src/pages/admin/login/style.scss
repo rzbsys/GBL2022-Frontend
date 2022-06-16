@@ -1,0 +1,43 @@
+.LoginBox {
+    position: absolute;
+    width: calc(100% - 40px);
+    margin-left: 20px;
+    bottom: 80px;
+
+    .LoginText {
+        font-size: 50px;
+    }
+
+    .LoginSubText {
+        margin-top: 10px;
+        color: rgb(100, 100, 100);
+    }
+
+    input[type="password"] {
+        width: 100%;
+        height: 55px;
+        border-radius: 20px;
+        border: 0px;
+        text-align: center;
+        font-size: 18px;
+        margin-top: 20px;
+        background-color: rgb(240, 240, 250);
+    }
+
+    input[type="password"]:focus {
+        outline: none;
+    }
+
+    .LoginButton {
+        width: 100%;
+        height: 55px;
+        border-radius: 20px;
+        border: 0px;
+        text-align: center;
+        font-size: 18px;
+        margin-top: 10px;
+        color: white;
+        background-color: rgb(39, 235, 160);
+
+    }
+}

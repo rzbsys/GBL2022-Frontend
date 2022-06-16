@@ -17,7 +17,7 @@ export const GetBooth = async (bid) => {
 export const MakeBooth = async () => {
     const res = await instance.post('/booth/new')
     return res.data;
-    
+
 }
 
 

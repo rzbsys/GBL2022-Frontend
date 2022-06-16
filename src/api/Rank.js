@@ -23,3 +23,8 @@ export const GetAllScores = async () => {
     const res = await instance.get('/score/')
     return res.data;
 }
+
+export const GetUserInfo = async (uid) => {
+    const res = await instance.get(`/user/${uid}`);
+    return res.data;
+}

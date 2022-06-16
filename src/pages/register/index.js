@@ -17,11 +17,10 @@ function RegisterPage() {
 
 
     function OnClick() {
-        PostUserSubject(AuthState.userUid).then((res) => {
-            console.log(res);
+        PostUserSubject(AuthState.userUid, AuthState.userName).then((res) => {
             dispatch(Register());
         }).catch(() => {
-            toast.error('이기범 일해라');
+            toast.error('회원가입에 실패하였습니다.');
         });
     }
 
