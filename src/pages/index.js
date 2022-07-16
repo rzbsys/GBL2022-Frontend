@@ -21,6 +21,8 @@ import Redirect from 'utils/Redirect';
 import Orientation from './orientation';
 import RankingPage from './ranking';
 import { CheckValid } from 'utils/useGoogleLogin';
+import PosterlistPage from './poster';
+
 
 
 function App() {
@@ -37,7 +39,7 @@ function App() {
     }, []);
 
     function ValidateURL(url) {
-        const NonAnimateURL = ['ranking', 'booth', 'settings', 'map', 'reserve', 'admin']
+        const NonAnimateURL = ['ranking', 'booth', 'settings', 'map', 'reserve', 'admin', 'poster']
         for (let i = 0; i < NonAnimateURL.length; i++) {
             if (url.includes(NonAnimateURL[i])) {
                 return false;
@@ -87,6 +89,7 @@ function App() {
                                                     <Route path='map' element={<MapPage></MapPage>}></Route>
                                                     <Route path='reserve' element={<ReservePage></ReservePage>}></Route>
                                                     <Route path='ranking' element={<RankingPage></RankingPage>}></Route>
+                                                    <Route path='poster' element={<PosterlistPage></PosterlistPage>}></Route>
                                                 </Routes>
                                             </CSSTransition>
                                         </TransitionGroup>

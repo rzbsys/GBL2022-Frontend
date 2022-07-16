@@ -1,5 +1,4 @@
 function BookJsonToList(bookjson) {
-    console.log(bookjson);
     const maxCnt = parseInt(process.env.REACT_APP_MAX_BOOK_CNT) + 1;
     var booklist = new Array(maxCnt).fill(-1);
     

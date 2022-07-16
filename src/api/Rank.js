@@ -1,8 +1,14 @@
 import { instance } from './lib/Instance';
 
 
-export const NewScore = async () => {
-    const res = await instance.post('/score')
+export const NewScore = async (uid, bid, score) => {
+    const payload = {
+        user_id : uid,
+        booth_id : bid,
+        score : score
+    }
+
+    const res = await instance.post('/score', payload);
     return res.data;   
 }
 

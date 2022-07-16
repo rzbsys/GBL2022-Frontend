@@ -1,9 +1,14 @@
-import React from 'react';
+import React, { memo } from 'react';
 import './style.scss';
 import { useNavigate } from 'react-router-dom';
+import Congestion from './congestion';
+import Subject from './subject';
 
-function BoothItem({title = 'Test', subtitle = 'Test', boothid = 1, onClickFunc}) {
+function BoothItem({title = 'Test', subtitle = 'Test', boothid, onClickFunc, congestion}) {
     const navigator = useNavigate();
+    const publicUrl = process.env.PUBLIC_URL;
+
+
     function OnClick() {
         if (!onClickFunc) {
             navigator('/booth/' + boothid);
@@ -11,15 +16,25 @@ function BoothItem({title = 'Test', subtitle = 'Test', boothid = 1, onClickFunc}
             onClickFunc();
         }
     }
+
+    
+
+    // GetBoothImage(boothid).then((res) => {
+    //     imgRef.current.src = res["images"][0]["image"];
+    // });
+
+
     return (
         <div className='BoothItem' onClick={OnClick}>
-            <img className='BoothImage' src="https://t1.daumcdn.net/cfile/tistory/24283C3858F778CA2E" alt="" />  
+            <Congestion congestion={congestion}></Congestion>
+            <Subject subject={title.split('//분야2//')[1]}></Subject>
+            <img className='BoothImage' src={`${publicUrl}/thumnails/${boothid - 1}.png`} alt="" />  
             <div className="Textbox">
-                <h2 className='w7'>{title}</h2>
+                <h2 className='w7'>{title.split('//분야2//')[0]}</h2>
                 <p>{subtitle}</p>
             </div>
         </div>
     );
 }
 
-export default BoothItem;
+export default memo(BoothItem);

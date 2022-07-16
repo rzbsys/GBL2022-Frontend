@@ -1,0 +1,42 @@
+.EditLoading {
+    width: 100vw;
+    height: 100vh;
+    background: linear-gradient(to bottom, rgba(255, 255, 255, 1), rgba(255, 255, 255, 0.95), rgba(255, 255, 255, 0.95), rgba(255, 255, 255, 0.4), rgba(255, 255, 255, 0.1));
+    position: fixed;
+    backdrop-filter: blur(3px);
+    top: 0px;
+    left: 0px;
+    z-index: 100;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    opacity: 0;
+    transition: opacity 0.4s;
+
+    h1 {
+        width: 100%;
+        margin-top: 50px;
+        margin-left: 50px;
+    }
+
+
+    .blue {
+        color: rgb(0, 100, 255);
+    }
+
+    p {
+        width: 100%;
+        margin-left: 50px;
+        color: rgb(60, 60, 60);
+    }
+
+    .Lottie {
+        width: 100%;
+        position: absolute;
+        bottom: 130px;
+    }
+}
+
+.EditLoadingshow {
+    opacity: 1;
+}

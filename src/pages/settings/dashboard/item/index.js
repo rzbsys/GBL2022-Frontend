@@ -3,11 +3,11 @@ import React, { useEffect, useState } from 'react';
 import './style.scss';
 
 function DashboardItem({ id, score }) {
-    const [BoothName, SetBoothName] = useState('');
+    const [BoothName, SetBoothName] = useState('불러오는중...');
 
     useEffect(() => {
         GetBooth(id).then((res) => {
-            SetBoothName(res.booth.name);
+            SetBoothName(res.booth.name.split('//분야1//')[1].split('//분야2//')[0]);
         });
     }, []);
 

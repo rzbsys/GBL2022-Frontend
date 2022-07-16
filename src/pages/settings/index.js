@@ -7,7 +7,7 @@ import Profile from './profile';
 import Dashboard from './dashboard';
 
 import { GetUserTotalScore } from 'api/Auth';
-import { GetUserScoreList } from 'api/Rank';
+import { GetAllScores, GetUserScoreList } from 'api/Rank';
 
 function SettingPage() {
     const UserData = useSelector(state => state.Auth);
@@ -22,6 +22,27 @@ function SettingPage() {
         GetUserScoreList(UserData.userUid).then((res) => {
             if (res.scores) {
                 SetActivities(res.scores);
+            }
+        });
+        GetAllScores().then((res) => {
+            var ScoreArray = [];
+            for(var key in res.user_scores) {
+                ScoreArray.push({
+                    id : key,
+                    score : res.user_scores[key]
+                });
+            }
+
+            ScoreArray.sort(function(a, b) {
+                return b.score - a.score;
+            });
+
+
+            for (var i = 0; i < ScoreArray.length; i++) {
+                if (ScoreArray[i].id === UserData.userUid) {
+                    SetRank(i + 1);
+                    break;
+                }
             }
         });
     }, []);

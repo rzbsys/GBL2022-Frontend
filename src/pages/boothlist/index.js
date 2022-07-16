@@ -1,4 +1,4 @@
-import React, { useEffect, useState, useTransition } from 'react';
+import React, { useEffect, useState, useTransition, useMemo } from 'react';
 import './style.scss';
 import Logo from 'components/logo';
 import Background from 'components/background';
@@ -23,13 +23,25 @@ function BoothlistPage() {
         timeoutMs: 3000
     });
 
+
+    const SearchBooths = useMemo(() => {
+        if (SearchWord === '') {
+            return BoothState.boothlist;
+        } else {
+            return BoothState.boothlist.filter((booth) => {
+                return booth.name.toLowerCase().includes(SearchWord.toLowerCase());
+            });
+        }
+    }, [SearchWord, BoothState]);
+
     useEffect(() => {
         GetBoothList().then((res) => {
             if (res.booths) {
                 dispatch(BoothIn(res.booths));
+
                 var cnt = 0;
                 for (var i = 0; i < res.booths.length; i++) {
-                    if (res.booths[i].congestion === 0) {
+                    if (res.booths[i].congestion === 2) {
                         cnt = cnt + 1;
                     }
                 }
@@ -53,9 +65,9 @@ function BoothlistPage() {
                 {
                     Loading || isPending
                         ? <LoadingEffect></LoadingEffect>
-                        : BoothState.boothlist.map((item, index) => {
-                            if (item.name.includes(SearchWord)) {
-                                return <BoothItem key={index} title={item.name} subtitle={item.content} boothid={item.id}></BoothItem>
+                        : SearchBooths.map((item, index) => {
+                            if (item.name.split('//분야1//')[0] === 'GBL') {
+                                return <BoothItem congestion={item.congestion} key={index} title={item.name.split('//분야1//')[1]} subtitle={item.content} boothid={item.id}></BoothItem>
                             } else {
                                 return null;
                             }

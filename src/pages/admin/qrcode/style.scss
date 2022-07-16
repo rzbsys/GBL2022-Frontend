@@ -1,0 +1,44 @@
+.QrFrame {
+    position: fixed;
+    width: 100vw;
+    height: 100vh;
+    z-index: 100;
+    background-color: rgba(20, 20, 20, 0.7);
+    opacity: 0;
+    transition: opacity 0.3s;
+
+    .Cancel {
+        width: calc(100% - 50px);
+        margin: 0 25px;
+        position: fixed;
+        bottom: 25px;
+        height: 60px;
+        border-radius: 20px;
+        font-size: 20px;
+        font-weight: 600;
+        color: rgb(0, 100, 255);
+        background-color: rgba(240, 240, 240, 0.8);
+        backdrop-filter: blur(3px);
+        border: 0px;
+    }
+
+    video {
+        transition: transform 0.3s;
+        transform: translateY(100%);
+        border-radius: 20px 20px 0px 0px;
+        position: absolute;
+        bottom: 0px;
+        width: 100vw;
+        height: 80vh;
+        object-fit: cover;
+        background-color: rgb(100, 100, 100);
+    }
+}
+
+.QrFrameshow {
+    opacity: 1;
+
+    video {
+        transform: translateY(0%);
+    }
+}

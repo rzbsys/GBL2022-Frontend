@@ -1,7 +1,8 @@
 import * as actions from './action';
 
 const initState = {
-    boothlist : null
+    boothlist : [],
+    imglist : []
 }
 
 function BoothReducer(state=initState, action) {
@@ -10,6 +11,11 @@ function BoothReducer(state=initState, action) {
             return {
                 ...state,
                 boothlist: action.payload
+            }
+        case actions.BOOTH_IMAGE_IN:
+            return {
+                ...state,
+                imglist: action.payload
             }
         default:
             return state;

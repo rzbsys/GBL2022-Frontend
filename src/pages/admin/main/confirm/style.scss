@@ -1,0 +1,98 @@
+.ConfirmFrame {
+    width: 100vw;
+    height: 100vh;
+    position: fixed;
+    left: 0px;
+    top: 0px;
+    background-color: white;
+    z-index: 1000;
+    display: flex;
+    flex-direction: column;    
+    opacity: 0;
+    transition: opacity 0.3s;
+
+    .Effect {
+        width: 100%;
+        height: 250px;
+    }
+
+    .title {
+        margin-left:25px;
+        margin-top: 30px;
+    }
+
+    .subtitle {
+        margin-left: 25px;
+        color: rgb(180, 180, 180);
+    }
+    .blue {
+        color: rgb(0, 100, 255);
+    }
+
+    .Block {
+        width: 100%;
+        height: 100px;
+
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        margin-top: 8px;
+        border-radius: 30px;  
+
+        h3 {
+            font-size: 18px;
+            font-weight: 500;
+            color: rgb(180, 180, 180);
+        }
+        h1 {
+            font-size: 35px;
+        }
+
+
+    }
+
+    hr {
+        width: 50%;
+        margin-left: 25%;
+        border: 0px;
+        height: 0.1px;
+        background-color: rgb(240, 240, 240);
+    }
+
+}
+
+.ConfirmFrameshow {
+    opacity: 1;
+}
+
+
+.ButtonFrame {
+    width: calc(100% - 40px);
+    position: fixed;
+    left: 20px;
+    bottom: 20px;
+    display: flex;
+    flex-direction: row;
+    gap: 15px;
+
+    button {
+        width: 100%;
+        height: 100%;
+        height: 55px;
+        font-size: 20px;
+        border-radius: 20px;
+        border: 0px;
+        font-weight: 500;
+    }
+
+    .Cancel {
+        background-color: rgb(240, 240, 240);
+        color: rgb(0, 100, 255);
+    }
+    
+    .Approve {
+        background-color: rgb(0, 100, 255);
+        color: white;
+    }
+}

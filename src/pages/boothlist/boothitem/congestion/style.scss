@@ -1,0 +1,25 @@
+.congestion {
+    position: absolute;
+    z-index: 15;
+    padding: 3px 14px;
+    border-radius: 100px;
+    top: 10px;
+    left: 15px;
+    font-size: 14px;
+    font-weight: 600;
+}
+
+.cong_widget0 {
+    background-color: rgb(255, 177, 177);
+    color: red;
+}
+
+.cong_widget1 {
+    background-color: rgb(255, 249, 222);
+    color: rgb(255, 213, 0);
+}
+
+.cong_widget2 {
+    background-color: rgb(209, 255, 216);
+    color: rgb(3, 218, 107);
+}

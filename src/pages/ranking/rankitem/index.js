@@ -6,7 +6,7 @@ import { GetUserScoreList, GetUserInfo } from 'api/Rank';
 function RankItem({ rank, score, id, SearchText }) {
 
     const [LastScore, SetLastScore] = useState(0);
-    const [UserName, SetUserName] = useState('');
+    const [UserName, SetUserName] = useState('불러오는 중');
 
     useEffect(() => {
         GetUserScoreList(id).then((res) => {
